@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "graphql-yoga": "^1.17.4",
     "prisma": "^1.27.1"
   },
