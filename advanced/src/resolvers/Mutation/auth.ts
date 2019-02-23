@@ -48,13 +48,11 @@ export const auth = {
 
   login: catchErrors(async (_, { email, password }, ctx) => {
     const user = await ctx.prisma.user({ email });
-
     if (!user) {
       throw new Error('There is no account with that email address.');
     }
 
     const validPassword = await comparePassword(password, user.password);
-
     if (!validPassword) {
       throw new Error('The password is incorrect');
     }

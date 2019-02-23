@@ -10,6 +10,7 @@ export default {
     const { id } = verifyUserToken(ctx) as Token;
     return await ctx.prisma.user({ id });
   }),
+
   user: catchErrors(async (_, { id }, ctx) => {
     return await ctx.prisma.user({ id });
   }),

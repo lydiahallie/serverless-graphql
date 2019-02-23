@@ -1,5 +1,7 @@
-endpoint: https://eu1.prisma.sh/lydiahallie123/prisma/dev
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.prisma
+
+secret: ${env:PRISMA_SECRET}
 
 generate:
   - generator: typescript-client
