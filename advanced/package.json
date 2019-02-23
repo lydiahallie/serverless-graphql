@@ -12,14 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^24.0.6",
     "dotenv": "^6.2.0",
     "graphql-yoga": "^1.17.4",
     "jsonwebtoken": "^8.5.0",
     "prisma": "^1.27.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "jest": "^24.1.0",
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-offline": "^4.6.0",
-    "serverless-plugin-typescript": "^1.1.5"
+    "serverless-plugin-typescript": "^1.1.5",
+    "ts-jest": "^24.0.0"
   }
 }
