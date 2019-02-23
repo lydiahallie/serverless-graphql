@@ -1,0 +1,34 @@
+service: basic-sls-graphql
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+  - serverless-plugin-typescript
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: us-west-2
+  environment:
+    PRISMA_ENDPOINT: ${self:custom.prisma_endpoint}
+
+custom:
+  defaultStage: dev
+  prisma_endpoint: ${env:PRISMA_ENDPOINT}
+
+functions:
+  graphql:
+    handler: src/handler.server
+    events:
+      - http:
+          path: /
+          method: post
+          cors: true
+  playground:
+    handler: src/handler.playground
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true

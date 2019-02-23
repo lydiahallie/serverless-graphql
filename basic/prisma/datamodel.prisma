@@ -1,0 +1,4 @@
+type Message {
+  id: ID! @unique
+  body: String!
+}

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serverless offline",
+    "deploy": "serverless deploy",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +14,10 @@
   "dependencies": {
     "graphql-yoga": "^1.17.4",
     "prisma": "^1.27.1"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^2.0.1",
+    "serverless-offline": "^4.6.0",
+    "serverless-plugin-typescript": "^1.1.5"
   }
 }
