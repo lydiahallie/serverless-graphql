@@ -1,0 +1,5 @@
+**/.build
+**/.serverless
+**/node_modules
+**/.env
+**/event.json
