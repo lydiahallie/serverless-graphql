@@ -1,9 +1,20 @@
-export default {
-  user: async (_, { id }, ctx) => {
-    return await ctx.prisma.user({ id });
-  },
+import { catchErrors } from '../../utils/error';
+import { verifyUserToken } from '../../utils/user';
 
-  users: async (_, args, ctx) => {
+interface Token {
+  id: string;
+}
+
+export default {
+  me: catchErrors(async (_, args, ctx, info) => {
+    const { id } = verifyUserToken(ctx) as Token;
+    return await ctx.prisma.user({ id });
+  }),
+  user: catchErrors(async (_, { id }, ctx) => {
+    return await ctx.prisma.user({ id });
+  }),
+
+  users: catchErrors(async (_, args, ctx) => {
     return await ctx.prisma.users();
-  }
+  })
 };

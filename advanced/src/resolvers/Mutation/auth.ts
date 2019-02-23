@@ -1,3 +1,5 @@
+import { sign } from 'jsonwebtoken';
+
 import { catchErrors } from '../../../utils/error';
 import {
   hashPassword,
@@ -5,6 +7,10 @@ import {
   validateEmail,
   comparePassword
 } from '../../../utils/auth';
+
+interface Token {
+  token: string;
+}
 
 export const auth = {
   signup: catchErrors(async (_, { firstName, lastName, email, password }, ctx) => {
@@ -30,8 +36,12 @@ export const auth = {
       password: hashPassword(password)
     });
 
+    const token: Token = sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '1y'
+    });
+
     return {
-      token: 'bladibla',
+      token,
       user
     };
   }),
@@ -49,8 +59,12 @@ export const auth = {
       throw new Error('The password is incorrect');
     }
 
+    const token: Token = sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '1y'
+    });
+
     return {
-      token: 'bladibla',
+      token,
       user
     };
   })
